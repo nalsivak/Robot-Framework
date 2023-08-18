@@ -14,8 +14,11 @@ Valid Login
     Sleep  5
     Click Element       id=jZ2SBf
     Sleep  3
-    ${"Robot_Text"}=  Get Text   xpath=(//h3[text()="Robot Framework"])[1]
-    Log To Console  ${"Robot_Text"}
+    @{"Robot_Elements"}=  Get WebElements   xpath=//h3[text()="Robot Framework"]
+    FOR    ${robot1}    IN    @{"Robot_Elements"}
+        ${robot}=  Get Text     ${robot1}
+        Log To Console  ${robot}
+    END
     ${"Selenium_Text"}=  Get Text   xpath=//a[text()="SeleniumLibrary"]
     Log To Console  ${"Selenium_Text"}
     ${"Introduction_text"}=  Get Text   xpath=//a[text()="Introduction"]
